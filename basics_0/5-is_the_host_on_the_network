@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-#The Internet Control Message Protocol (ICMP) is a protocol in the Internet protocol suite. It is used by network devices, to check if other network devices are available on the network.
-# The command ping uses ICMP to make sure that a network device remains online or to troubleshoot issues on the network.
-#Write a Bash script that pings an IP address passed as an argument.
-#Requirements:
+# Bash script that pings an IP address passed as an argument.
 
-#Accepts a string as an argument
-#Displays Usage: 5-is_the_host_on_the_network {IP_ADDRESS} if no argument passed
-#Ping the IP 5 times
-if [ $# -eq 0 ];then
-       	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
-	exit 1
+# Check if the number of command-line arguments is not equal to 1 (-ne = not equal to)
+if [ $# -ne 1 ]; then
+# If the number of arguments is not equal to 1, display a usage message.
+  echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+  exit 1
 fi
-
-ping -c 5  "$1"
+# Assign the first command-line argument (IP address) to the `ip_address` variable.
+ip_address="$1"
+# Execute the 'ping' command with 5 ICMP packets sent to the specified IP address.
+ping -c 5 "$ip_address"
